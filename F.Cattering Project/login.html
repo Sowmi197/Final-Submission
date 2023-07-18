@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login Form</title>
+  <link rel="stylesheet" type="text/css" href="login.css">
+</head>
+<body>
+  <div class="container">
+    <h3>LOGIN</h3>
+    <form id="login_form" onsubmit="submitForm(event)">
+      <h4>USERNAME</h4>
+      <input type="email" id="email" placeholder="Enter your email id" required>
+      <h4>PASSWORD</h4>
+      <input type="password" id="password" placeholder="Enter your password" required><br><br>
+      <input type="submit" value="Login">
+      <input type="button" value="SignUp" onclick="create()">
+    </form>
+  </div>
+  <script type="text/javascript">
+    function submitForm(event) {
+      event.preventDefault();
+      var email = document.getElementById('email').value;
+      var password = document.getElementById('password').value;
+
+      if (validateEmail(email) && validatePassword(password)) {
+        alert("Login successfully");
+        
+      }
+    }
+
+    function validateEmail(email) {
+      var emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+      return emailRegex.test(email);
+    }
+
+    function validatePassword(password) {
+      return password.length >= 6;
+    }
+
+    function create() {
+      window.location = "index.html";
+    }
+  </script>
+</body>
+</html>
